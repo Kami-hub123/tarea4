@@ -1,16 +1,21 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Navbar } from './layout/navbar/navbar';
+import { Footer } from './layout/footer/footer';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styles: [],
+  imports: [RouterOutlet, Navbar, Footer],
   template: `
-    <h1>Hello, {{ title() }}</h1>
-
-    <router-outlet />
+    <div class="min-h-screen bg-neutral-600 py-6">
+      <div class="mx-auto max-w-[1400px] overflow-hidden rounded-[40px] bg-neutral-200">
+        <app-navbar />
+        <main>
+          <router-outlet />
+        </main>
+        <app-footer />
+      </div>
+    </div>
   `,
 })
-export class App {
-  protected readonly title = signal('tarea4');
-}
+export class App {}
